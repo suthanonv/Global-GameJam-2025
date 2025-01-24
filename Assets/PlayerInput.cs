@@ -1,16 +1,33 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    int inputX;
+    int inputY;
+    List<GameObject> Player = new List<GameObject>() { };
     void Start()
     {
-        
-    }
 
-    // Update is called once per frame
+    }
     void Update()
     {
-        
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            inputX = -1;
+        }
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            inputX = 1;
+        }
+        if (Input.GetAxis("Vertical") < 0)
+        {
+            inputY = -1;
+        }
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            inputY = 1;
+        }
     }
 }
