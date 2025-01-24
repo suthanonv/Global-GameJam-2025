@@ -10,8 +10,8 @@ public class Sticky : MonoBehaviour
 
     public void Set_Stick()
     {
-        this.transform.parent = Wall.transform;
+        this.GetComponent<Gird_Movement>().enabled = false;
+
     }
 
-    public GameObject Wall;
 }

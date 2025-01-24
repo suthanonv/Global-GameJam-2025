@@ -3,9 +3,11 @@ using UnityEngine;
 public class Gird_Movement : MonoBehaviour
 {
     Rigidbody2D rb;
-    [SerializeField] float smoothingSpeed;
     [SerializeField] float Delay = 0.1f;
     float CurrentDealy;
+    PlayerInput input;
+    
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,7 +19,7 @@ public class Gird_Movement : MonoBehaviour
         Vector3 targetPosition = new Vector3();
 
 
-        Vector2 Direct = new Vector2();
+        Vector2 Direct = PlayerInput.instance.Input_Direction();
         if (Direct.y != 0 || Direct.x != 0)
         {
 
@@ -29,7 +31,7 @@ public class Gird_Movement : MonoBehaviour
         {
 
 
-            rb.MovePosition(targetPosition);
+            this.transform.position = targetPosition;
             CurrentDealy = Delay;
         }
 
@@ -37,6 +39,22 @@ public class Gird_Movement : MonoBehaviour
 
     }
 
+
+    private void OnEnable()
+    {
+        foreach(Transform i in this.transform)
+        {
+            PlayerInput.instance.keyTriggerEvents.Add(i.gameObject.GetComponent<KeyTriggerEvent>());    
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (Transform i in this.transform)
+        {
+            PlayerInput.instance.keyTriggerEvents.Remove(i.gameObject.GetComponent<KeyTriggerEvent>());
+        }
+    }
     public void OffDelay()
     {
         CurrentDealy -= Time.deltaTime;

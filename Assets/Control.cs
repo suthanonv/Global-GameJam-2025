@@ -14,8 +14,7 @@ public class Control : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && this.enabled != false)
         {
-            this.transform.parent = collision.transform;
-            this.enabled = false;
+            this.GetComponent< Gird_Movement>().enabled = true;
             PlayerTouchingEvent.Invoke();
         }
     }
