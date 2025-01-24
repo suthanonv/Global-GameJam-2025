@@ -14,7 +14,7 @@ public class Gird_Movement : MonoBehaviour
     {
         OffDelay();
 
-        Vector3 targetPosition = this.transform.position;
+        Vector3 targetPosition = new Vector3();
 
 
         Vector2 Direct = input_Direction();
@@ -25,10 +25,12 @@ public class Gird_Movement : MonoBehaviour
 
         }
 
-        if (targetPosition != transform.position)
+        if (targetPosition != Vector3.zero && CurrentDealy <= 0)
         {
-            Vector3 newPosition = Vector3.Lerp(rb.position, targetPosition, Time.fixedDeltaTime * smoothingSpeed);
-            rb.MovePosition(newPosition);
+
+
+            rb.MovePosition(targetPosition);
+            CurrentDealy = Delay;
         }
 
 
