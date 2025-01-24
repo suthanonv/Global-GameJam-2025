@@ -2,7 +2,15 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Grid_Movement : MonoBehaviour
 {
-    [SerializeField] Tile CurrentPlayerTile;
+    [SerializeField] Tile _currentPlayerTile;
+    Grid_Check Grid_Check;
+
+    public Tile CurrentPlayerTile => _currentPlayerTile;
+
+    private void Start()
+    {
+        Grid_Check = GetComponent<Grid_Check>();
+    }
 
     private void OnEnable()
     {
@@ -21,53 +29,104 @@ public class Grid_Movement : MonoBehaviour
 
     }
 
-
+    KeyCode lasstedKey = KeyCode.None;
     public void Moving(KeyCode Moving_Key)
     {
-        Debug.Log("Calling Move");
+        lasstedKey = Moving_Key;
+        Tile NewCurrent_Tile = null;
 
-        Tile NewCurrent_Tile = new Tile();
-        if (Moving_Key == KeyCode.W)
+        try
         {
-            NewCurrent_Tile = Tile_Manager.instance.ALl_Tile[CurrentPlayerTile.Tile_Index + new Vector2(0, 1)];
+            Debug.Log("Calling Move");
 
-            this.transform.position = NewCurrent_Tile.transform.position;
+            if (Moving_Key == KeyCode.W)
+            {
+                NewCurrent_Tile = Tile_Manager.instance.ALl_Tile[_currentPlayerTile.Tile_Index + new Vector2(0, 1)];
+
+            }
+            else if (Moving_Key == KeyCode.S)
+            {
+                NewCurrent_Tile = Tile_Manager.instance.ALl_Tile[_currentPlayerTile.Tile_Index + new Vector2(0, -1)];
+
+            }
+            else if (Moving_Key == KeyCode.A)
+            {
+                NewCurrent_Tile = Tile_Manager.instance.ALl_Tile[_currentPlayerTile.Tile_Index + new Vector2(-1, 0)];
+            }
+            else if (Moving_Key == KeyCode.D)
+            {
+                NewCurrent_Tile = Tile_Manager.instance.ALl_Tile[_currentPlayerTile.Tile_Index + new Vector2(1, 0)];
+            }
+
+            if (NewCurrent_Tile == null)
+            {
+                throw new System.Exception("NewCurrent_Tile is null. Unable to move to the specified tile.");
+            }
+
+            // Update the current player's tile information
+
+
+            // Call the checking method
+            Grid_Check.CheckingTile_AroundPlayer();
+
+        }
+        catch (KeyNotFoundException e)
+        {
+            Debug.Log(e);
+            this.GetComponent<Player_stage>().Stage = Box_Stage.Sticky;
+            this.enabled = false;
+            return;
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"An error occurred during movement: {e.Message}");
         }
 
-        if (Moving_Key == KeyCode.S)
+
+        Avalible_MovingDirection direction = CanBemovedAround();
+
+        if (direction.Can_Moving_Key[lasstedKey])
         {
-            NewCurrent_Tile = Tile_Manager.instance.ALl_Tile[CurrentPlayerTile.Tile_Index + new Vector2(0, -1)];
-            this.transform.position = NewCurrent_Tile.transform.position;
+            if (lasstedKey == KeyCode.W)
+            {
+                NewCurrent_Tile = Tile_Manager.instance.ALl_Tile[_currentPlayerTile.Tile_Index + new Vector2(0, 1)];
+                this.transform.position = NewCurrent_Tile.transform.position;
+
+            }
+            else if (lasstedKey == KeyCode.S)
+            {
+                NewCurrent_Tile = Tile_Manager.instance.ALl_Tile[_currentPlayerTile.Tile_Index + new Vector2(0, -1)];
+
+                this.transform.position = NewCurrent_Tile.transform.position;
+
+            }
+            else if (lasstedKey == KeyCode.A)
+            {
+                NewCurrent_Tile = Tile_Manager.instance.ALl_Tile[_currentPlayerTile.Tile_Index + new Vector2(-1, 0)];
+                this.transform.position = NewCurrent_Tile.transform.position;
+
+            }
+            else if (lasstedKey == KeyCode.D)
+            {
+                NewCurrent_Tile = Tile_Manager.instance.ALl_Tile[_currentPlayerTile.Tile_Index + new Vector2(1, 0)];
+                this.transform.position = NewCurrent_Tile.transform.position;
+            }
+
+            _currentPlayerTile = null;
+            NewCurrent_Tile.CharOnTile = this.gameObject;
+            _currentPlayerTile = NewCurrent_Tile;
+
         }
 
-        if (Moving_Key == KeyCode.A)
-        {
-            NewCurrent_Tile = Tile_Manager.instance.ALl_Tile[CurrentPlayerTile.Tile_Index + new Vector2(-1, 0)];
-
-            this.transform.position = NewCurrent_Tile.transform.position;
-
-        }
-
-        if (Moving_Key == KeyCode.D)
-        {
-            Debug.Log($"{CurrentPlayerTile.Tile_Index + new Vector2(1, 0)}");
-
-            NewCurrent_Tile = Tile_Manager.instance.ALl_Tile[CurrentPlayerTile.Tile_Index + new Vector2(1, 0)];
-
-            this.transform.position = NewCurrent_Tile.transform.position;
-
-
-        }
-
-        CurrentPlayerTile = NewCurrent_Tile;
-
-
+        Grid_Check.CheckingTile_AroundPlayer();
     }
+
+
+
 
 
     public Avalible_MovingDirection CanBemovedAround()
     {
-        Vector2 TileIndex = CurrentPlayerTile.Tile_Index;
 
         Avalible_MovingDirection Valid_Move = new Avalible_MovingDirection();
 
@@ -82,7 +141,7 @@ public class Grid_Movement : MonoBehaviour
 
         foreach (var direction in MovingDirection)
         {
-            Vector2 Move_Position = CurrentPlayerTile.Tile_Index + direction.Direction;
+            Vector2 Move_Position = _currentPlayerTile.Tile_Index + direction.Direction;
 
             if (Move_Position.x > Tile_Manager.instance.Tile_Max_Index.x && direction.Direction.x > 0)
             {

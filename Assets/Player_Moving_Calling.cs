@@ -67,41 +67,37 @@ public class Player_Moving_Calling : MonoBehaviour
     {
         if (CurrentCD > 0) return;
 
-        Avalible_MovingDirection Valid_Move_key = AvalibMovingDirection();
-
-        canW = Valid_Move_key.Can_Moving_Key[KeyCode.W];
-        CanS = Valid_Move_key.Can_Moving_Key[KeyCode.S];
-        CanA = Valid_Move_key.Can_Moving_Key[KeyCode.A];
-        CanD = Valid_Move_key.Can_Moving_Key[KeyCode.D];
 
 
-        if (canW && Key == KeyCode.W && CurrentCD <= 0)
+
+        if (Key == KeyCode.W && CurrentCD <= 0)
         {
             CurrentCD = CD;
             MovementCalling.Invoke(KeyCode.W);
             return;
         }
 
-        if (CanS && Key == (KeyCode.S) && CurrentCD <= 0)
+        if (Key == (KeyCode.S) && CurrentCD <= 0)
         {
             CurrentCD = CD;
             MovementCalling.Invoke(KeyCode.S);
             return;
 
         }
-        if (CanA && Key == (KeyCode.A) && CurrentCD <= 0)
+        if (Key == (KeyCode.A) && CurrentCD <= 0)
         {
             CurrentCD = CD;
             MovementCalling.Invoke(KeyCode.A);
             return;
         }
 
-        if (CanD && Key == (KeyCode.D) && CurrentCD <= 0)
+        if (Key == (KeyCode.D) && CurrentCD <= 0)
         {
             CurrentCD = CD;
             MovementCalling.Invoke(KeyCode.D);
             return;
         }
+
 
     }
 

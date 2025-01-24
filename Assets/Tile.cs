@@ -6,5 +6,6 @@ public class Tile : MonoBehaviour
 
     public bool CanMoveTo = true;
 
+    public GameObject CharOnTile;
 
 }
