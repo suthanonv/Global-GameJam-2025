@@ -41,6 +41,11 @@ public class PlayerInput : MonoBehaviour
         Vector2 p_Input = Vector2.zero;
         CheckCanInput();
 
+        if (Input.GetAxis("Horiztaonl") != 0 && Input.GetAxis("Vertical") != 0)
+        {
+            return p_Input;
+        }
+
         if (Input.GetAxis("Horizontal") < 0)
         {
             if (Can_Key[KeyCode.A])
