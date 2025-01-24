@@ -1,98 +1,136 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-
     public static PlayerInput instance;
 
-
     public List<KeyTriggerEvent> keyTriggerEvents = new List<KeyTriggerEvent>();
-    public Dictionary<KeyCode , bool> Can_Key =  new Dictionary<KeyCode, bool>
-{
-    { KeyCode.A, true },
-    { KeyCode.D, true },
-    { KeyCode.W, true },
-    { KeyCode.S, true }
-};
+
+    public Dictionary<KeyCode, bool> Can_Key = new Dictionary<KeyCode, bool>
+    {
+        { KeyCode.A, true },
+        { KeyCode.D, true },
+        { KeyCode.W, true },
+        { KeyCode.S, true }
+    };
+
 
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject); // Ensure singleton pattern
+        }
     }
 
-    int inputX;
-    int inputY;
-    List<GameObject> Player = new List<GameObject>() { };
-
-    void CheckCanInput()
+    private void Update()
     {
-        Dictionary<KeyCode, bool> keyValuePairs = new Dictionary<KeyCode, bool>
-{
-    { KeyCode.A, true },
-    { KeyCode.D, true },
-    { KeyCode.W, true },
-    { KeyCode.S, true }
-};
 
+    }
+
+    public Vector2 Input_Direction()
+    {
+
+
+        Vector2 p_Input = Vector2.zero;
+        CheckCanInput();
+
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            if (Can_Key[KeyCode.A])
+            {
+
+                p_Input.x = -1;
+            }
+            else
+            {
+
+                return Vector2.zero;
+            }
+
+        }
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            if (Can_Key[KeyCode.D])
+            {
+
+                p_Input.x = 1;
+            }
+            else
+            {
+
+                return Vector2.zero;
+            }
+
+        }
+
+        if (Input.GetAxis("Vertical") < 0)
+        {
+            if (Can_Key[KeyCode.S])
+            {
+
+                p_Input.y = -1;
+            }
+            else
+            {
+
+                return Vector2.zero;
+            }
+        }
+        if (Input.GetAxis("Vertical") > 0)
+        {
+            if (Can_Key[KeyCode.W])
+            {
+
+                p_Input.y = 1;
+            }
+            else
+            {
+                return Vector2.zero;
+            }
+        }
+
+
+
+        return p_Input;
+    }
+
+    public void CheckCanInput()
+    {
+        if (keyTriggerEvents == null || keyTriggerEvents.Count == 0)
+        {
+            return; // Exit early if no events are registered
+        }
+
+        // Reset Can_Key based on initial values
+        var defaultKeyStates = new Dictionary<KeyCode, bool>
+        {
+            { KeyCode.A, true },
+            { KeyCode.D, true },
+            { KeyCode.W, true },
+            { KeyCode.S, true }
+        };
 
         foreach (KeyTriggerEvent e in keyTriggerEvents)
         {
             if (e.OnWall)
             {
-                keyValuePairs[e.Key] = false;
+                defaultKeyStates[e.Key] = false;
+
             }
         }
-        foreach(KeyValuePair<KeyCode , bool> pair in keyValuePairs)
+
+        // Update Can_Key with the calculated states
+        foreach (var pair in defaultKeyStates)
         {
+
             Can_Key[pair.Key] = pair.Value;
         }
-
-    }
-    [SerializeField] float Delay;
-    float CurrentDelay;
-
-    private void Update()
-    {
-        CurrentDelay -= Time.deltaTime;
-    }
-    public Vector2 Input_Direction()
-    {
-
-        Vector2 p_Input = new Vector2();
-
-
-        if (Input.GetAxis("Horizontal") < 0 && Can_Key[KeyCode.A])
-        {
-            p_Input.x = -1;
-        }
-        if (Input.GetAxis("Horizontal") > 0 && Can_Key[KeyCode.D])
-        {
-            p_Input.x = 1;
-        }
-        if (Input.GetAxis("Vertical") < 0 && Can_Key[KeyCode.S])
-        {
-            p_Input.y = -1;
-        }
-        if (Input.GetAxis("Vertical") > 0 && Can_Key[KeyCode.W])
-        {
-            p_Input.y = 1;
-        }
-        if(CurrentDelay > 0)
-        {
-            return Vector2.zero;
-        }
-        
-        if (p_Input != Vector2.zero)
-        {
-            CurrentDelay = Delay;
-        }
-
-       
-
-        return p_Input;
     }
 }

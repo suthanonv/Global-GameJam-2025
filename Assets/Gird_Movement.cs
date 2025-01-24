@@ -3,19 +3,16 @@ using UnityEngine;
 public class Gird_Movement : MonoBehaviour
 {
     Rigidbody2D rb;
-    [SerializeField] float Delay = 0.1f;
-    float CurrentDealy;
     PlayerInput input;
-    
+
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    private void Update()
-    {
-        OffDelay();
 
+    public void Moveing()
+    {
         Vector3 targetPosition = new Vector3();
 
 
@@ -27,38 +24,33 @@ public class Gird_Movement : MonoBehaviour
 
         }
 
-        if (targetPosition != Vector3.zero && CurrentDealy <= 0)
-        {
 
-
-            this.transform.position = targetPosition;
-            CurrentDealy = Delay;
-        }
-
-
+        this.transform.position = targetPosition;
 
     }
 
 
     private void OnEnable()
     {
-        foreach(Transform i in this.transform)
+        Move_DelayCheck.instance.MovingCall.AddListener(Moveing);
+
+        foreach (Transform i in this.transform)
         {
-            PlayerInput.instance.keyTriggerEvents.Add(i.gameObject.GetComponent<KeyTriggerEvent>());    
+            PlayerInput.instance.keyTriggerEvents.Add(i.gameObject.GetComponent<KeyTriggerEvent>());
         }
     }
 
     private void OnDisable()
     {
+        Move_DelayCheck.instance.MovingCall.RemoveListener(Moveing);
+
+
         foreach (Transform i in this.transform)
         {
             PlayerInput.instance.keyTriggerEvents.Remove(i.gameObject.GetComponent<KeyTriggerEvent>());
         }
     }
-    public void OffDelay()
-    {
-        CurrentDealy -= Time.deltaTime;
-    }
+
 
 
 
