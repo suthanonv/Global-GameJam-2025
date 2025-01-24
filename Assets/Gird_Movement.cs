@@ -17,7 +17,7 @@ public class Gird_Movement : MonoBehaviour
         Vector3 targetPosition = new Vector3();
 
 
-        Vector2 Direct = input_Direction();
+        Vector2 Direct = new Vector2();
         if (Direct.y != 0 || Direct.x != 0)
         {
 
@@ -44,35 +44,6 @@ public class Gird_Movement : MonoBehaviour
 
 
 
-    public Vector2 input_Direction()
-    {
 
-        Vector2 Direct = new Vector2();
-
-
-
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            Direct.x = -1;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            Direct.x = 1;
-        }
-
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            Direct.y = 1;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            Direct.y = -1;
-        }
-
-
-        return Direct;
-    }
 
 }
