@@ -10,6 +10,8 @@ public class LevelLoader : MonoBehaviour
     public Animator _transition;
     public float _transitionTime = 1f;
 
+    private int _currentSceneIndex;
+
     private void Awake()
     {
         if(_instance != null) Destroy(this.gameObject);
@@ -18,8 +20,24 @@ public class LevelLoader : MonoBehaviour
 
         _transition.SetTrigger("Scene Initiated");
     }
+    private void Start()
+    {
+        Debug.Log("_currentSceneIndex has been set to current active scene.");
+        _currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+    }
+    private void Update()
+    {
+        if(_currentSceneIndex != SceneManager.GetActiveScene().buildIndex)
+        {
+            Debug.Log("_currentSceneIndex is no longer equal to current sceneIndex, now updating.");
+            //updates _currentSceneIndex, followed by initializing the update for a new scene
+            _currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            _transition.SetTrigger("Last Scene Finished");
+            _transition.SetTrigger("Scene Initiated");
+        }
+    }
 
-    
+
 
     public void LoadNextLevel()
     {
