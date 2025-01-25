@@ -218,6 +218,14 @@ public class Grid_Movement : MonoBehaviour
 
             }
 
+            try
+            {
+                Debug.Log(Tile_Manager.instance.ALl_Tile[Move_Position]);
+            }
+            catch
+            {
+                invalidKey.Add(direction.Moving_Key);
+            }
 
         }
 
@@ -271,10 +279,18 @@ public class Grid_Movement : MonoBehaviour
                 continue;
             }
 
-            if (Tile_Manager.instance.ALl_Tile[Move_Position].CanMoveTo == false)
+            try
             {
-                Debug.Log($"Move position {Move_Position} tile stuck");
+                if (Tile_Manager.instance.ALl_Tile[Move_Position].CanMoveTo == false)
+                {
+                    Debug.Log($"Move position {Move_Position} tile stuck");
 
+                    Valid_Move.Can_Moving_Key[direction.Moving_Key] = false;
+                    continue;
+                }
+            }
+            catch (KeyNotFoundException e)
+            {
                 Valid_Move.Can_Moving_Key[direction.Moving_Key] = false;
                 continue;
             }

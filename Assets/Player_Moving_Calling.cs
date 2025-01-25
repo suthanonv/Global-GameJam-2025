@@ -179,25 +179,31 @@ public class Player_Moving_Calling : MonoBehaviour
 
         List<KeyCode> Keys = new List<KeyCode>() { KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D };
 
-        // Iterate over all players to determine valid movement directions
-        foreach (KeyCode Result in Keys)
+        try
         {
-            foreach (var Player in AllPlayers)
+            foreach (KeyCode Result in Keys)
             {
-                bool isDone = false;
-
-
-                if (Player.CanBemovedAround().Can_Moving_Key[Result] == false)
+                foreach (var Player in AllPlayers)
                 {
-                    isDone = true;
-                    valid_Direction_Of_All_Player.Can_Moving_Key[Result] = false;
-                }
+                    bool isDone = false;
 
-                if (isDone)
-                {
-                    break;
+
+                    if (Player.CanBemovedAround().Can_Moving_Key[Result] == false)
+                    {
+                        isDone = true;
+                        valid_Direction_Of_All_Player.Can_Moving_Key[Result] = false;
+                    }
+
+                    if (isDone)
+                    {
+                        break;
+                    }
                 }
             }
+        }
+        catch (KeyNotFoundException e)
+        {
+
         }
 
         return valid_Direction_Of_All_Player;
