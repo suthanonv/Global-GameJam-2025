@@ -82,8 +82,18 @@ public class Grid_Movement : MonoBehaviour
             Debug.LogError($"An error occurred during movement: {e.Message}");
         }
 
+        Invoke("Moving", 0.001f);
+
+
+    }
+
+
+    void Moving()
+    {
+        Tile NewCurrent_Tile = null;
 
         Avalible_MovingDirection direction = CanBemovedAround();
+
 
         if (direction.Can_Moving_Key[lasstedKey])
         {
@@ -119,6 +129,7 @@ public class Grid_Movement : MonoBehaviour
         }
 
         Grid_Check.CheckingTile_AroundPlayer();
+
     }
 
 
