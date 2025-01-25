@@ -15,7 +15,11 @@ public class LevelLoader : MonoBehaviour
         if(_instance != null) Destroy(this.gameObject);
         DontDestroyOnLoad(this.gameObject);
         _instance = this;
+
+        _transition.SetTrigger("Scene Initiated");
     }
+
+    
 
     public void LoadNextLevel()
     {
