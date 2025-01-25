@@ -2,16 +2,9 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager _instance;
+    //public static SoundManager _instance; private void Awake() { if (_instance != null) Destroy(this.gameObject); DontDestroyOnLoad(this.gameObject); _instance = this; }
 
     [SerializeField] private AudioSource _soundFxSource;
-
-    private void Awake()
-    {
-        if (_instance != null) Destroy(this.gameObject);
-        DontDestroyOnLoad(this.gameObject);
-        _instance = this;
-    }
 
     public void PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
     {

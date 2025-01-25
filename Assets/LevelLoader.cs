@@ -14,9 +14,9 @@ public class LevelLoader : MonoBehaviour
 
     private void Awake()
     {
-        if(_instance != null) Destroy(this.gameObject);
-        DontDestroyOnLoad(this.gameObject);
-        _instance = this;
+        //if(_instance != null) Destroy(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
+        //_instance = this;
 
         _transition.SetTrigger("Scene Initiated");
     }
@@ -51,5 +51,10 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(_transitionTime);
 
         SceneManager.LoadScene(levelIndex);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
