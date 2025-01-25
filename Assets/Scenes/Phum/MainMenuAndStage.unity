@@ -619,7 +619,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 1
+          m_StringArgument: Cooked1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &154247691
@@ -970,7 +970,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 3
+          m_StringArgument: Cooked3
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &337983689
@@ -1451,6 +1451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95c05263c1d13449972dc2c9a275145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageNames: []
 --- !u!1 &888102747
 GameObject:
   m_ObjectHideFlags: 0
@@ -2199,7 +2200,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 2
+          m_StringArgument: Cooked2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1256564116
@@ -2737,7 +2738,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 4
+          m_StringArgument: Cooked4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1363961711
@@ -3411,7 +3412,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 5
+          m_StringArgument: Cooked5
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1516145576
