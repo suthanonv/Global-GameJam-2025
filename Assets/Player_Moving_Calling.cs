@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-
 public class Player_Moving_Calling : MonoBehaviour
 {
 
@@ -109,7 +109,25 @@ public class Player_Moving_Calling : MonoBehaviour
         bool CanD = valid_Move.Can_Moving_Key[KeyCode.D];
 
 
+        if (Key == KeyCode.W)
+        {
+            AllPlayersCopy.OrderByDescending(i => i.CurrentPlayerTile.Tile_Index.y);
+        }
 
+        if (Key == KeyCode.S)
+        {
+            AllPlayersCopy.OrderBy(i => i.CurrentPlayerTile.Tile_Index.y);
+        }
+
+        if (Key == KeyCode.A)
+        {
+            AllPlayersCopy.OrderBy(i => i.CurrentPlayerTile.Tile_Index.x);
+        }
+
+        if (Key == KeyCode.D)
+        {
+            AllPlayersCopy.OrderByDescending(i => i.CurrentPlayerTile.Tile_Index.x);
+        }
 
         if (canW && Key == KeyCode.W && CurrentCD <= 0)
         {

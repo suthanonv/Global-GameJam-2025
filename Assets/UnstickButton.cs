@@ -19,6 +19,7 @@ public class UnstickButton : MonoBehaviour
             {
                 playerStage.Stage = Box_Stage.Wake;
                 Grid_Movement.enabled = true;
+                this.GetComponent<Sticky_line_Maker>().ClearLine();
             }
         }
     }
