@@ -25,24 +25,24 @@ public class Player_Moving_Calling : MonoBehaviour
         OffCD();
 
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             Moving(KeyCode.W);
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             Moving(KeyCode.A);
 
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             Moving(KeyCode.S);
 
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             Moving(KeyCode.D);
 
