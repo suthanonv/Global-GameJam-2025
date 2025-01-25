@@ -64,7 +64,6 @@ public class Player_Moving_Calling : MonoBehaviour
     public void Moving(KeyCode Key)
     {
         if (CurrentCD > 0) return;
-        Avalible_MovingDirection valid_Move = AvalibMovingDirection();
 
 
         List<Grid_Movement> AllPlayersCopy = new List<Grid_Movement>();
@@ -96,6 +95,13 @@ public class Player_Moving_Calling : MonoBehaviour
         }
 
 
+
+        SecondMove(Key, AllPlayersCopy);
+    }
+
+    public void SecondMove(KeyCode Key, List<Grid_Movement> AllPlayersCopy)
+    {
+        Avalible_MovingDirection valid_Move = AvalibMovingDirection();
 
         bool canW = valid_Move.Can_Moving_Key[KeyCode.W];
         bool CanS = valid_Move.Can_Moving_Key[KeyCode.S];
@@ -144,7 +150,6 @@ public class Player_Moving_Calling : MonoBehaviour
             }
             return;
         }
-
 
     }
 

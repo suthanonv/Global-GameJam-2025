@@ -204,27 +204,27 @@ public class Grid_Movement : MonoBehaviour
             if (Move_Position.x > Tile_Manager.instance.Tile_Max_Index.x && direction.Direction.x > 0)
             {
                 Debug.Log($"Move position d {Move_Position} out of tile");
-                Valid_Move.Can_Moving_Key[direction.Moving_Key] = true;
+                Valid_Move.Can_Moving_Key[direction.Moving_Key] = false;
                 continue;
             }
             else if (Move_Position.x < Tile_Manager.instance.Tile_Min_Index.x && direction.Direction.x < 0)
             {
                 Debug.Log($"Move position a {Move_Position} out of tile");
-                Valid_Move.Can_Moving_Key[direction.Moving_Key] = true;
+                Valid_Move.Can_Moving_Key[direction.Moving_Key] = false;
                 continue;
             }
 
             if (Move_Position.y > Tile_Manager.instance.Tile_Max_Index.y && direction.Direction.y > 0)
             {
                 Debug.Log($"Move position w {Move_Position} out of tile");
-                Valid_Move.Can_Moving_Key[direction.Moving_Key] = true;
+                Valid_Move.Can_Moving_Key[direction.Moving_Key] = false;
                 continue;
             }
 
             else if (Move_Position.y < Tile_Manager.instance.Tile_Min_Index.y && direction.Direction.y < 0)
             {
                 Debug.Log($"Move position s {Move_Position} out of tile");
-                Valid_Move.Can_Moving_Key[direction.Moving_Key] = true;
+                Valid_Move.Can_Moving_Key[direction.Moving_Key] = false;
                 continue;
             }
 
