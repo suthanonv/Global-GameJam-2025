@@ -186,3 +186,8 @@ public class Player_Moving_Calling : MonoBehaviour
     }
 }
 
+
+public static class GettingRevertKey
+{
+    public static Dictionary<KeyCode, KeyCode> RevertingKey = new Dictionary<KeyCode, KeyCode>() { { KeyCode.W, KeyCode.S }, { KeyCode.S, KeyCode.W }, { KeyCode.A, KeyCode.D }, { KeyCode.D, KeyCode.A } };
+}

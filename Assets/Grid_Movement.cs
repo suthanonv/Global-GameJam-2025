@@ -1,15 +1,17 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public class Grid_Movement : MonoBehaviour
 {
     [SerializeField] Tile _currentPlayerTile;
     Grid_Check Grid_Check;
-
+    Sticky_line_Maker lineMaker;
     public Tile CurrentPlayerTile => _currentPlayerTile;
 
     private void Start()
     {
         Grid_Check = GetComponent<Grid_Check>();
+        lineMaker = GetComponent<Sticky_line_Maker>();
     }
 
     private void OnEnable()
@@ -54,10 +56,7 @@ public class Grid_Movement : MonoBehaviour
                 NewCurrent_Tile = Tile_Manager.instance.ALl_Tile[_currentPlayerTile.Tile_Index + new Vector2(1, 0)];
             }
 
-            if (NewCurrent_Tile == null)
-            {
-                throw new System.Exception("NewCurrent_Tile is null. Unable to move to the specified tile.");
-            }
+
 
             // Update the current player's tile information
 
@@ -71,12 +70,54 @@ public class Grid_Movement : MonoBehaviour
             CurrentPlayerTile.CanMoveTo = false;
             this.GetComponent<Player_stage>().Stage = Box_Stage.Sticky;
             this.enabled = false;
+
+            Sticking_Line(Moving_Key);
+
+
             return;
         }
         catch (System.Exception e)
         {
             Debug.LogError($"An error occurred during movement: {e.Message}");
         }
+
+
+
+    }
+
+    public void Sticking_Line(KeyCode InputKey)
+    {
+        KeyCode RevertKey = GettingRevertKey.RevertingKey[InputKey];
+
+        List<Tile> Valid_Tile_Around_Player = Grid_Check.GetTileARoundPlayer();
+
+        List<MoveDirection> MovingDirection = new List<MoveDirection>()
+        {
+           new MoveDirection( new Vector2(0, 1) ,KeyCode.W),
+           new MoveDirection( new Vector2(1, 0), KeyCode.D),
+           new MoveDirection(   new Vector2(0, -1), KeyCode.S),
+            new MoveDirection(new Vector2(-1, 0), KeyCode.A)
+        };
+
+
+        foreach (MoveDirection direction in MovingDirection)
+        {
+
+            if (RevertKey == direction.Moving_Key)
+            {
+                Tile SerchingTIle = Valid_Tile_Around_Player.FirstOrDefault(i => i.Tile_Index == CurrentPlayerTile.Tile_Index + direction.Direction);
+
+                if (SerchingTIle != null)
+                {
+                    if (SerchingTIle.CharOnTile != null)
+                    {
+                        SerchingTIle.CharOnTile.GetComponent<Sticky_line_Maker>().StartMakeLine(this.CurrentPlayerTile, SerchingTIle);
+                    }
+                }
+                break;
+            }
+        }
+
 
 
 
@@ -117,12 +158,14 @@ public class Grid_Movement : MonoBehaviour
                 this.transform.position = NewCurrent_Tile.transform.position;
             }
 
+            _currentPlayerTile.CharOnTile = null;
             _currentPlayerTile = null;
             NewCurrent_Tile.CharOnTile = this.gameObject;
             _currentPlayerTile = NewCurrent_Tile;
 
         }
 
+        lineMaker.AddingLine(CurrentPlayerTile);
         Grid_Check.CheckingTile_AroundPlayer();
 
     }
