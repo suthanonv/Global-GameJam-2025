@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Phum/MainMenu.unity
+    path: Assets/Scenes/Phum/MainMenuAndStage.unity
     guid: 2e5300b16620663459cf98d7e956dea0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Phum/StageSelectionScene.unity
     guid: d1c8e67fc9d7bc14691b1081431860de
   - enabled: 1
