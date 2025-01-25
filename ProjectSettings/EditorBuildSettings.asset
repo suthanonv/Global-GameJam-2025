@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Phum/MainMenu.unity
+    guid: 2e5300b16620663459cf98d7e956dea0
+  - enabled: 1
+    path: Assets/Scenes/Phum/StageSelectionScene.unity
+    guid: d1c8e67fc9d7bc14691b1081431860de
+  - enabled: 1
+    path: Assets/Scenes/Phum/Stage1Test.unity
+    guid: 3ac49d3acaa905345aecfa804920695c
+  - enabled: 0
+    path: Assets/Scenes/New_Sample.unity
+    guid: 6a38b7585a782a04b85ab53ab612c45d
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects:

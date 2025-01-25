@@ -8,6 +8,6 @@ public class Tile : MonoBehaviour
 
     public GameObject CharOnTile;
 
-
+    //public bool IsCheckpoint = false;
 
 }
