@@ -1,5 +1,6 @@
 using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -23,9 +24,9 @@ public class MenuController : MonoBehaviour
         StartCoroutine(ZoomToTable());
     }
 
-    IEnumerator ZoomToTable()
+    System.Collections.IEnumerator ZoomToTable()
     {
-        while (Vector3.Distance(mainCamera.transform.position, tablePosition.position) > 0.01f)
+        while (Vector3.Distance(mainCamera.transform.position, tablePosition.position) > 0.1f)
         {
             mainCamera.transform.position = Vector3.Lerp(
                 mainCamera.transform.position,
@@ -36,17 +37,6 @@ public class MenuController : MonoBehaviour
         }
 
         mainCamera.transform.position = tablePosition.position;
-
-        Debug.Log("Activating Stage Selection UI");
-
         stageSelectionUI.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
-
-        if (!stageSelectionUI.activeSelf)
-        {
-            Debug.LogWarning("StageSelectionUI was disabled. Re-activating...");
-            stageSelectionUI.SetActive(true);
-        }
     }
-
 }
