@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Phum/StageSelectionScene.unity
     guid: d1c8e67fc9d7bc14691b1081431860de
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Phum/Stage1Test.unity
     guid: 3ac49d3acaa905345aecfa804920695c
   - enabled: 0
@@ -20,12 +20,27 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Mono/Mono.unity
     guid: b0024ae9752f812438f9ad6fee436ff0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Mono/Mono2.unity
     guid: 02d17b46b61751b4fbe3c3643169694e
+  - enabled: 1
+    path: Assets/Scenes/Cooked1.unity
+    guid: e45b18cffa9449b4295e01da1142c22e
+  - enabled: 1
+    path: Assets/Scenes/Cooked2.unity
+    guid: 780ea249acfbefb48b256e76bc69c64a
+  - enabled: 1
+    path: Assets/Scenes/Cooked3.unity
+    guid: 6c24b9546f69ff1449ac405aef3169fa
+  - enabled: 1
+    path: Assets/Scenes/Cooked4.unity
+    guid: 74f2998e6b755544b8531033b134ec12
+  - enabled: 1
+    path: Assets/Scenes/Cooked5.unity
+    guid: d5f9c26c5a0ac824ea3cb89726fafcac
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
