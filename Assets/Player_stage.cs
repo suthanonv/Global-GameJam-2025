@@ -16,23 +16,23 @@ public class Player_stage : MonoBehaviour
             // Replacing switch-case with if-else
             if (box_Stage == Box_Stage.Sleep)
             {
-                sprite_render.color = Color.gray;
+               
                 this.GetComponent<Grid_Movement>().CurrentPlayerTile.CanMoveTo = true;
                 this.GetComponent<Grid_Movement>().enabled = false;
             }
             else if (box_Stage == Box_Stage.Wake)
             {
-                sprite_render.color = Color.red;
                 this.GetComponent<Grid_Movement>().CurrentPlayerTile.CanMoveTo = true;
                 this.GetComponent<Grid_Movement>().enabled = true;
 
             }
             else if (box_Stage == Box_Stage.Sticky)
             {
-                sprite_render.color = Color.yellow;
                 this.GetComponent<Grid_Movement>().CurrentPlayerTile.CanMoveTo = false;
                 this.GetComponent<Grid_Movement>().enabled = false;
             }
+
+            sprite_render.sprite = Sprite_Libery.Sprite_Stage[box_Stage];
         }
     }
 }
