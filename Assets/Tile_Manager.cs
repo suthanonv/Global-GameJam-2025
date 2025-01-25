@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 public class Tile_Manager : MonoBehaviour
@@ -21,9 +22,12 @@ public class Tile_Manager : MonoBehaviour
     {
         foreach (Transform i in this.transform)
         {
-            ALl_Tile.Add(i.gameObject.GetComponent<Tile>().Tile_Index, i.gameObject.GetComponent<Tile>());
+           
+                ALl_Tile.Add(i.gameObject.GetComponent<Tile>().Tile_Index, i.gameObject.GetComponent<Tile>());
 
-            Debug.Log($"{i.gameObject.GetComponent<Tile>().Tile_Index} , {i.gameObject.GetComponent<Tile>()}");
+                Debug.Log($"{i.gameObject.GetComponent<Tile>().Tile_Index} , {i.gameObject.GetComponent<Tile>()}");
+          
+
         }
 
 

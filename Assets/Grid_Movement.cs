@@ -17,17 +17,9 @@ public class Grid_Movement : MonoBehaviour
     private void OnEnable()
     {
         if (Player_Moving_Calling.instance == null) return;
-
         Player_Moving_Calling.instance.AllPlayers.Add(this);
     }
 
-
-    private void OnDisable()
-    {
-
-        Player_Moving_Calling.instance.AllPlayers.Remove(this);
-
-    }
 
     public void Sticky(KeyCode Moving_Key)
     {
@@ -220,7 +212,7 @@ public class Grid_Movement : MonoBehaviour
 
             try
             {
-                Debug.Log(Tile_Manager.instance.ALl_Tile[Move_Position]);
+               Tile ez =  Tile_Manager.instance.ALl_Tile[Move_Position];
             }
             catch
             {

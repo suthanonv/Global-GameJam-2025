@@ -25,24 +25,24 @@ public class Player_Moving_Calling : MonoBehaviour
         OffCD();
 
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             Moving(KeyCode.W);
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             Moving(KeyCode.A);
 
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
             Moving(KeyCode.S);
 
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             Moving(KeyCode.D);
 
@@ -96,81 +96,98 @@ public class Player_Moving_Calling : MonoBehaviour
 
 
 
-        SecondMove(Key, AllPlayersCopy);
+        SecondMove(Key);
     }
 
-    public void SecondMove(KeyCode Key, List<Grid_Movement> AllPlayersCopy)
+    public void SecondMove(KeyCode Key )
     {
+        List<Grid_Movement> AllPlayersCopy = new List<Grid_Movement>();
+
+        List<Grid_Movement> UnMoveable_tile = new List<Grid_Movement>();
+
+        foreach (Grid_Movement move in AllPlayers)
+        {
+            if (move.gameObject.GetComponent<Player_stage>().Stage == Box_Stage.Sticky)
+            {
+                UnMoveable_tile.Add(move);  
+            }
+            else if(move.gameObject.GetComponent<Player_stage>().Stage == Box_Stage.Wake)
+            {
+                AllPlayersCopy.Add(move);
+            }
+        }
+
+        CurrentCD = CD;
         Avalible_MovingDirection valid_Move = AvalibMovingDirection();
 
-        bool canW = valid_Move.Can_Moving_Key[KeyCode.W];
-        bool CanS = valid_Move.Can_Moving_Key[KeyCode.S];
-        bool CanA = valid_Move.Can_Moving_Key[KeyCode.A];
-        bool CanD = valid_Move.Can_Moving_Key[KeyCode.D];
+        // Dictionary for move directions
+        Dictionary<KeyCode, MoveDirection> movingDirectionDict = new Dictionary<KeyCode, MoveDirection>()
+    {
+        { KeyCode.W, new MoveDirection(new Vector2(0, 1), KeyCode.W) },
+        { KeyCode.D, new MoveDirection(new Vector2(1, 0), KeyCode.D) },
+        { KeyCode.S, new MoveDirection(new Vector2(0, -1), KeyCode.S) },
+        { KeyCode.A, new MoveDirection(new Vector2(-1, 0), KeyCode.A) }
+    };
 
-
-        if (Key == KeyCode.W)
+        // Sorting players based on key input (if necessary)
+        switch (Key)
         {
-            AllPlayersCopy.OrderByDescending(i => i.CurrentPlayerTile.Tile_Index.y);
+            case KeyCode.A:
+                AllPlayersCopy = AllPlayersCopy.OrderBy(i => i.CurrentPlayerTile.Tile_Index.x).ToList();
+                break;
+            case KeyCode.D:
+                AllPlayersCopy = AllPlayersCopy.OrderByDescending(i => i.CurrentPlayerTile.Tile_Index.x).ToList();
+                break;
+            case KeyCode.W:
+                AllPlayersCopy = AllPlayersCopy.OrderByDescending(i => i.CurrentPlayerTile.Tile_Index.y).ToList();
+                break;
+            case KeyCode.S:
+                AllPlayersCopy = AllPlayersCopy.OrderBy(i => i.CurrentPlayerTile.Tile_Index.y).ToList();
+                break;
         }
 
-        if (Key == KeyCode.S)
+        Dictionary<Vector2, Grid_Movement> Future_Move = new Dictionary<Vector2, Grid_Movement>();
+
+        foreach (Grid_Movement player in AllPlayersCopy)
         {
-            AllPlayersCopy.OrderBy(i => i.CurrentPlayerTile.Tile_Index.y);
+            MoveDirection moveDirection = movingDirectionDict[Key];
+            Vector2 futurePosition = player.CurrentPlayerTile.Tile_Index + moveDirection.Direction;
+
+            Future_Move[futurePosition] = player;
+
         }
 
-        if (Key == KeyCode.A)
-        {
-            AllPlayersCopy.OrderBy(i => i.CurrentPlayerTile.Tile_Index.x);
-        }
+        List<Grid_Movement> Valid_Move = new List<Grid_Movement>();
 
-        if (Key == KeyCode.D)
+        foreach (var future_move in Future_Move)
         {
-            AllPlayersCopy.OrderByDescending(i => i.CurrentPlayerTile.Tile_Index.x);
-        }
-
-        if (canW && Key == KeyCode.W && CurrentCD <= 0)
-        {
-            CurrentCD = CD;
-            foreach (Grid_Movement move in AllPlayersCopy)
+            Grid_Movement newThing = null;
+            foreach(var Obstacle in UnMoveable_tile)
             {
-                move.Moving(Key);
+                if(future_move.Key == Obstacle.CurrentPlayerTile.Tile_Index)
+                {
+                    newThing = future_move.Value;
+                    break;
+                }
             }
-            return;
-        }
 
-        if (Key == (KeyCode.S) && CanS && CurrentCD <= 0)
-        {
-            CurrentCD = CD;
-            foreach (Grid_Movement move in AllPlayersCopy)
+            if (newThing != null)
             {
-                move.Moving(Key);
+                UnMoveable_tile.Add(newThing);
             }
-            return;
-
-        }
-        if (Key == (KeyCode.A) && CanA && CurrentCD <= 0)
-        {
-            CurrentCD = CD;
-            foreach (Grid_Movement move in AllPlayersCopy)
+            else
             {
-                move.Moving(Key);
+                Valid_Move.Add(future_move.Value);
             }
-            return;
         }
 
-        if (Key == (KeyCode.D) && CanD && CurrentCD <= 0)
+        foreach(Grid_Movement Finaly_ican_sleep  in Valid_Move)
         {
-            CurrentCD = CD;
-            foreach (Grid_Movement move in AllPlayersCopy)
-            {
-                move.Moving(Key);
-            }
-            return;
+            Finaly_ican_sleep.Moving(Key);
         }
 
+        // You can now use the Future_Move dictionary for further processing
     }
-
 
     public Avalible_MovingDirection AvalibMovingDirection()
     {
