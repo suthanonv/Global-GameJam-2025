@@ -16,23 +16,19 @@ public class Grid_Movement : MonoBehaviour
     {
         if (Player_Moving_Calling.instance == null) return;
 
-        Player_Moving_Calling.instance.MovementCalling.AddListener(Moving);
         Player_Moving_Calling.instance.AllPlayers.Add(this);
     }
 
 
     private void OnDisable()
     {
-        Player_Moving_Calling.instance.MovementCalling.RemoveListener(Moving);
 
         Player_Moving_Calling.instance.AllPlayers.Remove(this);
 
     }
 
-    KeyCode lasstedKey = KeyCode.None;
-    public void Moving(KeyCode Moving_Key)
+    public void Sticky(KeyCode Moving_Key)
     {
-        lasstedKey = Moving_Key;
         Tile NewCurrent_Tile = null;
 
         try
@@ -72,7 +68,7 @@ public class Grid_Movement : MonoBehaviour
         }
         catch (KeyNotFoundException e)
         {
-            Debug.Log(e);
+            CurrentPlayerTile.CanMoveTo = false;
             this.GetComponent<Player_stage>().Stage = Box_Stage.Sticky;
             this.enabled = false;
             return;
@@ -82,13 +78,12 @@ public class Grid_Movement : MonoBehaviour
             Debug.LogError($"An error occurred during movement: {e.Message}");
         }
 
-        Invoke("Moving", 0.001f);
 
 
     }
 
 
-    void Moving()
+    public void Moving(KeyCode lasstedKey)
     {
         Tile NewCurrent_Tile = null;
 
@@ -133,7 +128,59 @@ public class Grid_Movement : MonoBehaviour
     }
 
 
+    public List<KeyCode> Serching_Move_StickWall()
+    {
 
+        List<KeyCode> invalidKey = new List<KeyCode>();
+
+        List<MoveDirection> MovingDirection = new List<MoveDirection>()
+        {
+           new MoveDirection( new Vector2(0, 1) ,KeyCode.W),
+           new MoveDirection( new Vector2(1, 0), KeyCode.D),
+           new MoveDirection(   new Vector2(0, -1), KeyCode.S),
+            new MoveDirection(new Vector2(-1, 0), KeyCode.A)
+        };
+
+
+        foreach (var direction in MovingDirection)
+        {
+            Vector2 Move_Position = _currentPlayerTile.Tile_Index + direction.Direction;
+
+            if (Move_Position.x > Tile_Manager.instance.Tile_Max_Index.x && direction.Direction.x > 0)
+            {
+                Debug.Log($"Move position d {Move_Position} out of tile");
+                invalidKey.Add(direction.Moving_Key);
+
+            }
+            else if (Move_Position.x < Tile_Manager.instance.Tile_Min_Index.x && direction.Direction.x < 0)
+            {
+                Debug.Log($"Move position a {Move_Position} out of tile");
+                invalidKey.Add(direction.Moving_Key);
+
+                ;
+            }
+
+            if (Move_Position.y > Tile_Manager.instance.Tile_Max_Index.y && direction.Direction.y > 0)
+            {
+                Debug.Log($"Move position w {Move_Position} out of tile");
+                invalidKey.Add(direction.Moving_Key);
+
+            }
+
+            else if (Move_Position.y < Tile_Manager.instance.Tile_Min_Index.y && direction.Direction.y < 0)
+            {
+                Debug.Log($"Move position s {Move_Position} out of tile");
+                invalidKey.Add(direction.Moving_Key);
+
+
+            }
+
+
+        }
+
+        return invalidKey;
+
+    }
 
 
     public Avalible_MovingDirection CanBemovedAround()
@@ -157,29 +204,28 @@ public class Grid_Movement : MonoBehaviour
             if (Move_Position.x > Tile_Manager.instance.Tile_Max_Index.x && direction.Direction.x > 0)
             {
                 Debug.Log($"Move position d {Move_Position} out of tile");
-                Valid_Move.Can_Moving_Key[direction.Moving_Key] = false;
+                Valid_Move.Can_Moving_Key[direction.Moving_Key] = true;
                 continue;
             }
             else if (Move_Position.x < Tile_Manager.instance.Tile_Min_Index.x && direction.Direction.x < 0)
             {
                 Debug.Log($"Move position a {Move_Position} out of tile");
-                Valid_Move.Can_Moving_Key[direction.Moving_Key] = false;
+                Valid_Move.Can_Moving_Key[direction.Moving_Key] = true;
                 continue;
             }
 
             if (Move_Position.y > Tile_Manager.instance.Tile_Max_Index.y && direction.Direction.y > 0)
             {
                 Debug.Log($"Move position w {Move_Position} out of tile");
-                Valid_Move.Can_Moving_Key[direction.Moving_Key] = false;
+                Valid_Move.Can_Moving_Key[direction.Moving_Key] = true;
                 continue;
             }
 
             else if (Move_Position.y < Tile_Manager.instance.Tile_Min_Index.y && direction.Direction.y < 0)
             {
                 Debug.Log($"Move position s {Move_Position} out of tile");
-                Valid_Move.Can_Moving_Key[direction.Moving_Key] = false;
+                Valid_Move.Can_Moving_Key[direction.Moving_Key] = true;
                 continue;
-
             }
 
             if (Tile_Manager.instance.ALl_Tile[Move_Position].CanMoveTo == false)

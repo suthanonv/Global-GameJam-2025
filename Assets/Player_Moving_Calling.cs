@@ -1,13 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Player_Moving_Calling : MonoBehaviour
 {
 
     public static Player_Moving_Calling instance;
 
-    public UnityEvent<KeyCode> MovementCalling = new UnityEvent<KeyCode>();
 
     public List<Grid_Movement> AllPlayers = new List<Grid_Movement>();
 
@@ -66,35 +64,84 @@ public class Player_Moving_Calling : MonoBehaviour
     public void Moving(KeyCode Key)
     {
         if (CurrentCD > 0) return;
+        Avalible_MovingDirection valid_Move = AvalibMovingDirection();
+
+
+        List<Grid_Movement> AllPlayersCopy = new List<Grid_Movement>();
+        List<Grid_Movement> itemsToRemove = new List<Grid_Movement>();
+
+        foreach (Grid_Movement p in AllPlayers)
+        {
+            AllPlayersCopy.Add(p);
+        }
+
+
+        List<Grid_Movement> StickWallMove = new List<Grid_Movement>();
+
+        foreach (Grid_Movement move in AllPlayersCopy)
+        {
+            foreach (KeyCode i in move.Serching_Move_StickWall())
+            {
+                if (i == Key)
+                {
+                    move.Sticky(Key);
+                    itemsToRemove.Add(move);
+                }
+            }
+        }
+
+        foreach (Grid_Movement move in itemsToRemove)
+        {
+            AllPlayersCopy.Remove(move);
+        }
+
+
+
+        bool canW = valid_Move.Can_Moving_Key[KeyCode.W];
+        bool CanS = valid_Move.Can_Moving_Key[KeyCode.S];
+        bool CanA = valid_Move.Can_Moving_Key[KeyCode.A];
+        bool CanD = valid_Move.Can_Moving_Key[KeyCode.D];
 
 
 
 
-        if (Key == KeyCode.W && CurrentCD <= 0)
+        if (canW && Key == KeyCode.W && CurrentCD <= 0)
         {
             CurrentCD = CD;
-            MovementCalling.Invoke(KeyCode.W);
+            foreach (Grid_Movement move in AllPlayersCopy)
+            {
+                move.Moving(Key);
+            }
             return;
         }
 
-        if (Key == (KeyCode.S) && CurrentCD <= 0)
+        if (Key == (KeyCode.S) && CanS && CurrentCD <= 0)
         {
             CurrentCD = CD;
-            MovementCalling.Invoke(KeyCode.S);
+            foreach (Grid_Movement move in AllPlayersCopy)
+            {
+                move.Moving(Key);
+            }
             return;
 
         }
-        if (Key == (KeyCode.A) && CurrentCD <= 0)
+        if (Key == (KeyCode.A) && CanA && CurrentCD <= 0)
         {
             CurrentCD = CD;
-            MovementCalling.Invoke(KeyCode.A);
+            foreach (Grid_Movement move in AllPlayersCopy)
+            {
+                move.Moving(Key);
+            }
             return;
         }
 
-        if (Key == (KeyCode.D) && CurrentCD <= 0)
+        if (Key == (KeyCode.D) && CanD && CurrentCD <= 0)
         {
             CurrentCD = CD;
-            MovementCalling.Invoke(KeyCode.D);
+            foreach (Grid_Movement move in AllPlayersCopy)
+            {
+                move.Moving(Key);
+            }
             return;
         }
 
