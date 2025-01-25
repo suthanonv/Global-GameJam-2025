@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8558e4a57954dd41b25e7aa2e865727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tile_Max_Index: {x: 7, y: 2}
+  Tile_Max_Index: {x: 100, y: 100}
   Tile_Min_Index: {x: 0, y: 0}
 --- !u!4 &328778181
 Transform:
@@ -849,7 +849,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.33, y: 1.32, z: -10}
+  m_LocalPosition: {x: 3.05, y: 1.32, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
