@@ -186,6 +186,8 @@ public class Player_Moving_Calling : MonoBehaviour
             Finaly_ican_sleep.Moving(Key);
         }
 
+
+        Move_History.Instance.Save();
         // You can now use the Future_Move dictionary for further processing
     }
 

@@ -6,8 +6,11 @@ public class Grid_Movement : MonoBehaviour
     [SerializeField] Tile _currentPlayerTile;
     Grid_Check Grid_Check;
     Sticky_line_Maker lineMaker;
-    public Tile CurrentPlayerTile => _currentPlayerTile;
-
+    public Tile CurrentPlayerTile
+    {
+        get => _currentPlayerTile;  // Corrected getter syntax
+        set { _currentPlayerTile = value; }  // Corrected setter syntax
+    }
     private void Start()
     {
         Grid_Check = GetComponent<Grid_Check>();
@@ -115,6 +118,10 @@ public class Grid_Movement : MonoBehaviour
 
     }
 
+    public void TeleportTile()
+    {
+        this.transform.position = CurrentPlayerTile.transform.position;
+    }
 
     public void Moving(KeyCode lasstedKey)
     {
