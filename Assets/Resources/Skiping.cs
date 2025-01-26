@@ -54,12 +54,18 @@ public class Skiping : MonoBehaviour
     }
 
 
-    public void Loading(string anme)
+    public void Loading(string anme, bool NeedTIme = true)
     {
         CurrentName = anme;
 
-        Invoke("LoadingScreen", TransitionTime);
-
+        if (NeedTIme)
+        {
+            Invoke("LoadingScreen", TransitionTime);
+        }
+        else
+        {
+            LoadingScreen();
+        }
     }
 
 

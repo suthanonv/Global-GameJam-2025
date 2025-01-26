@@ -31,7 +31,7 @@ public class Winning_Check : MonoBehaviour
             Debug.LogWarning("AudioSource is not assigned!");
         }
 
-        Skiping.Instance.Loading(NextStageName);
+        Skiping.Instance.Loading(NextStageName, false);
 
     }
 
