@@ -268,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   All_Winning_Tile:
   - {fileID: 346286362}
+  NextStageName: Cooked2
 --- !u!1 &253000703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,6 +1292,7 @@ GameObject:
   - component: {fileID: 730951838}
   - component: {fileID: 730951837}
   - component: {fileID: 730951839}
+  - component: {fileID: 730951840}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1341,6 +1343,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AllPlayer:
   - {fileID: 1294088904}
+--- !u!114 &730951840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730951836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1baab38a50f238046a8b66b8a7514c7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 1302723820812287101, guid: a180582f8fefef447b8c71ff36a7880b, type: 3}
+  - {fileID: 21300000, guid: 633adbc5d93aacb4ab8b1b7cf12eeefc, type: 3}
+  - {fileID: 658958207689130101, guid: 2b421509b2fb2bc468ea89673d573324, type: 3}
 --- !u!1 &737812544
 GameObject:
   m_ObjectHideFlags: 0

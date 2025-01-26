@@ -1,8 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class Winning_Check : MonoBehaviour
 {
     [SerializeField] List<Checkpoint> All_Winning_Tile = new List<Checkpoint>();
+    [SerializeField] string NextStageName;
 
 
 
@@ -10,7 +13,7 @@ public class Winning_Check : MonoBehaviour
     {
         if (isWininng())
         {
-            Debug.Log("You Win!");
+            StartCoroutine(GoNextStage());
         }
     }
     bool isWininng()
@@ -24,5 +27,11 @@ public class Winning_Check : MonoBehaviour
         }
 
         return true;
+    }
+
+    IEnumerator GoNextStage()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        SceneManager.LoadScene(NextStageName);
     }
 }
