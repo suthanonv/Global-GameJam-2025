@@ -64,7 +64,7 @@ public class LevelLoader : MonoBehaviour
     void LoadSceneByIndex()
     {
         SceneManager.LoadScene(_sceneIndex);
-        _transition.SetTrigger("FUCK");
+        
     }
 
     public string SceneName;
@@ -78,8 +78,6 @@ public class LevelLoader : MonoBehaviour
     void LoadSceneByName()
     {
         SceneManager.LoadScene(SceneName);
-        _transition.SetTrigger("FUCK");
-
     }
 
 }
