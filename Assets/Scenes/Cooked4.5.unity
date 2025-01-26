@@ -1090,6 +1090,7 @@ MonoBehaviour:
   - {fileID: 1549234550}
   - {fileID: 95193960}
   NextStageName: cooked5
+  audioSource: {fileID: 0}
 --- !u!114 &449064416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5953,6 +5954,71 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6389725170796233125, guid: 8ae7ed0d3584aa84489917b3d3b30c81, type: 3}
   m_PrefabInstance: {fileID: 2069091237}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2078968275
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3717920016394997894, guid: 7cdb849ddcd449f4e91ade098d181399, type: 3}
+      propertyPath: Name_Future
+      value: Cooked5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3717920016394997894, guid: 7cdb849ddcd449f4e91ade098d181399, type: 3}
+      propertyPath: Name_Previos
+      value: Cooked4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345062026575325973, guid: 7cdb849ddcd449f4e91ade098d181399, type: 3}
+      propertyPath: m_Name
+      value: Animation
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042802017608409155, guid: 7cdb849ddcd449f4e91ade098d181399, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042802017608409155, guid: 7cdb849ddcd449f4e91ade098d181399, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 540
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042802017608409155, guid: 7cdb849ddcd449f4e91ade098d181399, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042802017608409155, guid: 7cdb849ddcd449f4e91ade098d181399, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042802017608409155, guid: 7cdb849ddcd449f4e91ade098d181399, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042802017608409155, guid: 7cdb849ddcd449f4e91ade098d181399, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042802017608409155, guid: 7cdb849ddcd449f4e91ade098d181399, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042802017608409155, guid: 7cdb849ddcd449f4e91ade098d181399, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042802017608409155, guid: 7cdb849ddcd449f4e91ade098d181399, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042802017608409155, guid: 7cdb849ddcd449f4e91ade098d181399, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7cdb849ddcd449f4e91ade098d181399, type: 3}
 --- !u!120 &2082451005 stripped
 LineRenderer:
   m_CorrespondingSourceObject: {fileID: 4507558999592517446, guid: f646abf95d4ad4745a3680c201730733, type: 3}
@@ -6222,3 +6288,4 @@ SceneRoots:
   - {fileID: 449064419}
   - {fileID: 2109013225}
   - {fileID: 36359106}
+  - {fileID: 2078968275}
