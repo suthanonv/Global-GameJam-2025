@@ -769,7 +769,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      - m_Target: {fileID: 4829483219060540063}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadSpecificLevel
         m_Mode: 5
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      - m_Target: {fileID: 4829483219060540063}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadSpecificLevel
         m_Mode: 5
@@ -1646,7 +1646,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      - m_Target: {fileID: 4829483219060540063}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadSpecificLevel
         m_Mode: 5
@@ -1810,7 +1810,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      - m_Target: {fileID: 4829483219060540063}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadSpecificLevel
         m_Mode: 5
@@ -1943,7 +1943,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      - m_Target: {fileID: 4829483219060540063}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadSpecificLevel
         m_Mode: 5
@@ -2455,7 +2455,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      - m_Target: {fileID: 4829483219060540063}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadSpecificLevel
         m_Mode: 5
@@ -2588,7 +2588,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      - m_Target: {fileID: 4829483219060540063}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadSpecificLevel
         m_Mode: 5
@@ -4690,7 +4690,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      - m_Target: {fileID: 4829483219060540063}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadSpecificLevel
         m_Mode: 5
@@ -4972,7 +4972,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      - m_Target: {fileID: 4829483219060540063}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadSpecificLevel
         m_Mode: 5
@@ -5272,7 +5272,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      - m_Target: {fileID: 4829483219060540063}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadSpecificLevel
         m_Mode: 5
@@ -5405,7 +5405,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      - m_Target: {fileID: 4829483219060540063}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadSpecificLevel
         m_Mode: 5
@@ -5538,7 +5538,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      - m_Target: {fileID: 4829483219060540063}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadSpecificLevel
         m_Mode: 5
@@ -5671,7 +5671,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      - m_Target: {fileID: 4829483219060540063}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadSpecificLevel
         m_Mode: 5
@@ -5804,7 +5804,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      - m_Target: {fileID: 4829483219060540063}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadSpecificLevel
         m_Mode: 5
