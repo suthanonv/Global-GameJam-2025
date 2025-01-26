@@ -2322,7 +2322,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      - m_Target: {fileID: 4829483219060540063}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadSpecificLevel
         m_Mode: 5
@@ -6141,6 +6141,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Loader
       objectReference: {fileID: 0}
+    - target: {fileID: 6602859533237201666, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+      propertyPath: _transition
+      value: 
+      objectReference: {fileID: 4829483219060540065}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6157,6 +6161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0a9986688317b478e9c598bb47e09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &4829483219060540065 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4598467497243858413, guid: a08594964c0d3f244b85d9741c15684e, type: 3}
+  m_PrefabInstance: {fileID: 4829483219060540061}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
