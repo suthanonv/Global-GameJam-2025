@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 73572800}
   - component: {fileID: 73572802}
   - component: {fileID: 73572801}
-  - component: {fileID: 73572803}
   m_Layer: 0
   m_Name: 1,1
   m_TagString: Untagged
@@ -223,19 +222,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &73572803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73572799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fdc18a4b074e404a828f412d97ec497, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tile_Check_Behaviour: 0
 --- !u!1 &95193956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2327,8 +2313,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   All_Winning_Tile:
-  - {fileID: 73572803}
-  NextStageName: 
+  - {fileID: 858150213}
+  - {fileID: 1737197370}
+  NextStageName: Cooked4.5
 --- !u!4 &1040920488
 Transform:
   m_ObjectHideFlags: 0

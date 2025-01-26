@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum Box_Stage { Sleep, Wake, Sticky }
@@ -40,8 +41,12 @@ public class Player_stage : MonoBehaviour
                 this.GetComponent<Grid_Movement>().enabled = false;
                 
             }
-
-            sprite_render.sprite = Sprite_Libery.Sprite_Stage[box_Stage];
+           
+                    
+          
+                sprite_render.sprite = Sprite_Libery.Instance.sprites[(int)box_Stage];
+            
+           
         }
     }
 }

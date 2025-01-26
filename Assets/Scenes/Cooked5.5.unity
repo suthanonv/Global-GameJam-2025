@@ -9348,7 +9348,7 @@ MonoBehaviour:
   - {fileID: 974571689}
   - {fileID: 1314536861}
   - {fileID: 1021683473}
-  NextStageName: cooked6
+  NextStageName: Cooked6
 --- !u!114 &2142196829
 MonoBehaviour:
   m_ObjectHideFlags: 0

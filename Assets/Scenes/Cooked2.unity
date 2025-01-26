@@ -252,9 +252,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   All_Winning_Tile:
-  - {fileID: 0}
-  - {fileID: 0}
-  NextStageName: 
+  - {fileID: 346286362}
+  - {fileID: 1847671990}
+  NextStageName: Cooked3
 --- !u!4 &241947279
 Transform:
   m_ObjectHideFlags: 0
