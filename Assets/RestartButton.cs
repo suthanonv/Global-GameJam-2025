@@ -11,7 +11,7 @@ public class RestartButton : MonoBehaviour
         {
             if (oneTime == false)
             {
-                Skiping.Instance.Loading(SceneManager.GetActiveScene().name);
+                Skiping.Instance.Loading(SceneManager.GetActiveScene().name , false);
             }
 
         }

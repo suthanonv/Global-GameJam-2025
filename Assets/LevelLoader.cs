@@ -69,7 +69,10 @@ public class LevelLoader : MonoBehaviour
     }
     void LoadSceneByName()
     {
-        SceneManager.LoadScene(SceneName);
+        if(Skiping.Instance != null)
+        {
+            Skiping.Instance.Loading(SceneName, false);
+        }
     }
 
 }
