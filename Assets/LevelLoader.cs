@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,7 +13,7 @@ public class LevelLoader : MonoBehaviour
 
     private void Awake()
     {
-        if(_instance != null) Destroy(this.gameObject);
+        if (_instance != null) Destroy(this.gameObject);
         DontDestroyOnLoad(this.gameObject);
         _instance = this;
 
@@ -27,7 +26,7 @@ public class LevelLoader : MonoBehaviour
     }
     private void Update()
     {
-        if(_currentSceneIndex != SceneManager.GetActiveScene().buildIndex) //For Fixing Animation
+        if (_currentSceneIndex != SceneManager.GetActiveScene().buildIndex) //For Fixing Animation
         {
             Debug.Log("_currentSceneIndex is no longer equal to current sceneIndex, now updating.");
             //updates _currentSceneIndex, followed by initializing the update for a new scene
@@ -49,7 +48,7 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevel(_currentSceneIndex + 1));
     }
 
-    IEnumerator LoadLevel(int levelIndex)
+    public IEnumerator LoadLevel(int levelIndex)
     {
         _transition.SetTrigger("Start");
 
