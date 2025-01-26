@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,8 +7,8 @@ public class LevelLoader : MonoBehaviour
 {
     public static LevelLoader _instance;
 
-    public Animator _transition;
-    public float _transitionTime = 1f;
+    private AnimatorController _transition;
+    public float _transitionTime = 1.5f;
 
     private int _currentSceneIndex;
     private string tRGWT;
@@ -17,13 +18,11 @@ public class LevelLoader : MonoBehaviour
         if (_instance != null) Destroy(this.gameObject);
         DontDestroyOnLoad(this.gameObject);
         _instance = this;
-
-        _transition.SetTrigger("New Scene Initiated");
     }
     private void Start()
     {
-        Invoke("aaaa", 5f);
-
+        _transition = GetComponent<AnimatorController>();
+        _transition.SetTrigger("New Scene Initiated");
         Debug.Log("_currentSceneIndex has been set to current active scene.");
         _currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
@@ -38,43 +37,57 @@ public class LevelLoader : MonoBehaviour
         }
     } //Update Used Only For Animation
 
-    public void LoadMainMenu()
-    {
-        PauseGame._instance.Unpause();
-      //  StartCoroutine(StartTransition());
-        SceneManager.LoadScene("MainMenuAndStage");
-    }
-    public void LoadNextLevel()
-    {
-        PauseGame._instance.Unpause();
-      //  StartCoroutine(StartTransition());
-        SceneManager.LoadScene(_currentSceneIndex + 1);
-    }
+    public int _sceneIndex;
 
+    public void LoadNextScene()
+    {
+        _sceneIndex = _currentSceneIndex + 1;
+        PauseGame._instance.Unpause();
+        _transition.SetBool("tfTrigger", true);
+        Invoke("LoadSceneByIndex", _transitionTime);
+    }
+    
     public void LoadPreviousLevel()
     {
+        _sceneIndex = _currentSceneIndex - 1;
         PauseGame._instance.Unpause();
-       // StartCoroutine(StartTransition());
-        SceneManager.LoadScene(_currentSceneIndex + 1);
+        _transition.SetBool("tfTrigger", true);
+        Invoke("LoadSceneByIndex", _transitionTime);
     }
     public void RestartLevel()
     {
+        _sceneIndex = _currentSceneIndex;
         PauseGame._instance.Unpause();
-       // StartCoroutine(StartTransition());
-        SceneManager.LoadScene(_currentSceneIndex);
+        _transition.SetBool("tfTrigger", true);
+        Invoke("LoadSceneByIndex", _transitionTime);
+    }
+
+    void LoadSceneByIndex()
+    {
+        SceneManager.LoadScene(_sceneIndex);
+        _transition.SetBool("tfTrigger", false);
     }
 
     public string SceneName;
     public void LoadSpecificLevel(string LevelName)
     {
+        _transition.SetBool("tfTrigger", true);
         SceneName =  LevelName;
         PauseGame._instance.Unpause();
-        _transition.SetTrigger("Start");
         Invoke("LoadSceneByName", _transitionTime);
     }
     void LoadSceneByName()
     {
         SceneManager.LoadScene(SceneName);
+        if (_transition.GetBool("tfTrigger"))
+        {
+            _transition.SetBool("tfTrigger", false);
+        }
+        else
+        {
+            _transition.SetBool("tfTrigger", true);
+        }
+        
     }
 
 }
