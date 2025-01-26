@@ -41,6 +41,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cooked5.5.unity
     guid: d5f9c26c5a0ac824ea3cb89726fafcac
+  - enabled: 1
+    path: Assets/Scenes/Cooked6.5.unity
+    guid: 6429e8892f9c567439c36cde93c293b8
+  - enabled: 1
+    path: Assets/Scenes/Cooked7.unity
+    guid: 67fa79cc00a010245b1e1cb5f4d54f04
+  - enabled: 1
+    path: Assets/Scenes/Cooked8.unity
+    guid: d897724e7d4906941affd0e5c84e98f8
+  - enabled: 1
+    path: Assets/Scenes/Cooked8.5.unity
+    guid: fdd2d7faf1b394e4daf76aa93d86d999
+  - enabled: 1
+    path: Assets/Scenes/Cooked9.unity
+    guid: 421a6144d8bcf604fa52111a52cbfa54
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
