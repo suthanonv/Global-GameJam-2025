@@ -39,12 +39,14 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadPreviousLevel()
     {
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex - 1));
+        PauseGame._instance.Unpause();
+        StartCoroutine(LoadLevel(_currentSceneIndex - 1));
     }
 
     public void LoadNextLevel()
     {
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        PauseGame._instance.Unpause();
+        StartCoroutine(LoadLevel(_currentSceneIndex + 1));
     }
 
     IEnumerator LoadLevel(int levelIndex)
@@ -58,6 +60,6 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenuAndStage");
     }
 }

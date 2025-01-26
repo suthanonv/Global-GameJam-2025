@@ -3,7 +3,7 @@ using UnityEngine;
 public class PauseGame : MonoBehaviour
 {
     //DontDestroyOnLoad
-    private static PauseGame _instance; private void Awake() { if (_instance != null) Destroy(this.gameObject); DontDestroyOnLoad(this.gameObject); _instance = this; }
+    public static PauseGame _instance; private void Awake() { if (_instance != null) Destroy(this.gameObject); DontDestroyOnLoad(this.gameObject); _instance = this; }
 
     //the actual pause menu code
     [SerializeField] private GameObject TheActualMenuBeingToggled;
