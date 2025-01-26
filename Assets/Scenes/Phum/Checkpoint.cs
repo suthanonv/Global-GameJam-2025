@@ -14,17 +14,29 @@ public class Checkpoint : MonoBehaviour
     {
         if (Tile_Check_Behaviour == Win_Check_Behaviour.Need_Block)
         {
-            if (this.GetComponent<Tile>().CharOnTile)
+            if (this.GetComponent<Tile>().CharOnTile != null)
             {
-                render.sprite = Sprite_Libery.Instance.Have_Block_in_Win_tile;
+                if (Sprite_Libery.Instance != null)
+                {
+                    Sprite sprite = Sprite_Libery.Instance.Have_Block_in_Win_tile;
+                    if (sprite != null)
+                    {
+
+
+                        render.sprite = sprite;
+                    }
+                }
             }
             else
             {
-                render.sprite = Sprite_Libery.Instance.No_Block_in_Win_tile;
+                Sprite sprite = Sprite_Libery.Instance.No_Block_in_Win_tile;
+                if (sprite != null)
+                    render.sprite = sprite;
+                
 
             }
 
-            return (this.GetComponent<Tile>().CharOnTile);
+            return (this.GetComponent<Tile>().CharOnTile != null);
         }
         else
         {
