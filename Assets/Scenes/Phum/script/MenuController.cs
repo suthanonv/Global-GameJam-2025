@@ -1,5 +1,5 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
@@ -24,7 +24,7 @@ public class MenuController : MonoBehaviour
         StartCoroutine(ZoomToTable());
     }
 
-    System.Collections.IEnumerator ZoomToTable()
+    IEnumerator ZoomToTable()
     {
         while (Vector3.Distance(mainCamera.transform.position, tablePosition.position) > 0.1f)
         {

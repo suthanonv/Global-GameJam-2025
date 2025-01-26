@@ -8181,8 +8181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprites:
   - {fileID: 1302723820812287101, guid: a180582f8fefef447b8c71ff36a7880b, type: 3}
-  - {fileID: -2034373561918944285, guid: d42b94db4a7f7944b8c751f81f49b28d, type: 3}
-  - {fileID: 6618722860023825962, guid: dfa8097949e30b648bca5dbd2869fb59, type: 3}
+  - {fileID: -8371162634218495489, guid: 144adf269866af241a953abdf6f04e14, type: 3}
+  - {fileID: -8716448119565522051, guid: af990fe630cfc0b44bfdc66f17c1d64b, type: 3}
   Have_Block_in_Win_tile: {fileID: -2357619279747993539, guid: 18503a29437eb8c4185ee8584d7632fc, type: 3}
   No_Block_in_Win_tile: {fileID: -3282712536176824083, guid: 2bb45a3c6d038a14a9f2f26ce0533ea4, type: 3}
 --- !u!4 &1821197284
