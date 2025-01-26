@@ -14,9 +14,9 @@ public class LevelLoader : MonoBehaviour
 
     private void Awake()
     {
-        //if(_instance != null) Destroy(this.gameObject);
-        //DontDestroyOnLoad(this.gameObject);
-        //_instance = this;
+        if(_instance != null) Destroy(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
+        _instance = this;
 
         _transition.SetTrigger("Scene Initiated");
     }
@@ -27,7 +27,7 @@ public class LevelLoader : MonoBehaviour
     }
     private void Update()
     {
-        if(_currentSceneIndex != SceneManager.GetActiveScene().buildIndex)
+        if(_currentSceneIndex != SceneManager.GetActiveScene().buildIndex) //For Fixing Animation
         {
             Debug.Log("_currentSceneIndex is no longer equal to current sceneIndex, now updating.");
             //updates _currentSceneIndex, followed by initializing the update for a new scene
@@ -35,9 +35,12 @@ public class LevelLoader : MonoBehaviour
             _transition.SetTrigger("Last Scene Finished");
             _transition.SetTrigger("Scene Initiated");
         }
+    } //Only For Animation
+
+    public void LoadPreviousLevel()
+    {
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex - 1));
     }
-
-
 
     public void LoadNextLevel()
     {
