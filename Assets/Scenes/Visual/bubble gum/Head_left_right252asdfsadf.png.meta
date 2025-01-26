@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3bd4dd301f0437541ad6a93ae33ecc97
+guid: af990fe630cfc0b44bfdc66f17c1d64b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1912288442742163041
-    second: IMG_0441_0
+      213: -8716448119565522051
+    second: Head_left_right252asdfsadf_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 1300
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_0441_0
+      name: Head_left_right252asdfsadf_0
       rect:
         serializedVersion: 2
-        x: 86
-        y: 98
-        width: 1336
-        height: 1316
+        x: 41
+        y: 12
+        width: 1425
+        height: 1477
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1664bb9f430d98a10800000000000000
-      internalID: 1912288442742163041
+      spriteID: d7bec22fd94f80780800000000000000
+      internalID: -8716448119565522051
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IMG_0441_0: 1912288442742163041
+      Head_left_right252asdfsadf_0: -8716448119565522051
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
