@@ -19,6 +19,8 @@ public class Winning_Check : MonoBehaviour
 
     public void Finish()
     {
+        Player_Moving_Calling.instance.enabled = false;
+
         if (audioSource != null)
         {
             audioSource.Play(); // Play the sound
@@ -44,6 +46,9 @@ public class Winning_Check : MonoBehaviour
             one = true;
             Finish();
         }
+
+
+
     }
     bool isWininng()
     {
