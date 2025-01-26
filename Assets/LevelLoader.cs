@@ -54,6 +54,12 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(StartTransition());
         SceneManager.LoadScene(_currentSceneIndex + 1);
     }
+    public void RestartLevel()
+    {
+        PauseGame._instance.Unpause();
+        StartCoroutine(StartTransition());
+        SceneManager.LoadScene(_currentSceneIndex);
+    }
 
     public void LoadSpecificLevel(string LevelName)
     {

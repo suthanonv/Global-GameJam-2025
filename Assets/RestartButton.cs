@@ -13,7 +13,7 @@ public class RestartButton : MonoBehaviour
             {
                 if (LevelLoader._instance != null)
                 {
-                    StartCoroutine(LevelLoader._instance.LoadLevel(SceneManager.GetActiveScene().buildIndex));
+                    LevelLoader._instance.RestartLevel();
                 }
                 else
                 {
