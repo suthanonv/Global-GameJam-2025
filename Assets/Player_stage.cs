@@ -21,7 +21,7 @@ public class Player_stage : MonoBehaviour
         {
             playsmacksound.PlaySound();
             box_Stage = value;
-            
+            this.GetComponent<SpriteRenderer>().color = Color.white;    
             // Replacing switch-case with if-else
             if (box_Stage == Box_Stage.Sleep)
             {

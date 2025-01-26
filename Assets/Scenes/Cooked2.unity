@@ -1413,7 +1413,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 1302723820812287101, guid: a180582f8fefef447b8c71ff36a7880b, type: 3}
   - {fileID: 21300000, guid: 633adbc5d93aacb4ab8b1b7cf12eeefc, type: 3}
-  - {fileID: 658958207689130101, guid: 2b421509b2fb2bc468ea89673d573324, type: 3}
+  - {fileID: 6618722860023825962, guid: dfa8097949e30b648bca5dbd2869fb59, type: 3}
   Have_Block_in_Win_tile: {fileID: -2357619279747993539, guid: 18503a29437eb8c4185ee8584d7632fc, type: 3}
   No_Block_in_Win_tile: {fileID: -3282712536176824083, guid: 2bb45a3c6d038a14a9f2f26ce0533ea4, type: 3}
 --- !u!1 &737812544

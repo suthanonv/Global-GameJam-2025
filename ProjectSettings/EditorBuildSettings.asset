@@ -65,6 +65,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cooked10.unity
     guid: b33d28e15c4b8e24589a5b78b231ab10
+  - enabled: 1
+    path: Assets/Scenes/Cooked6.unity
+    guid: e5d12bc5e912dfa46abe105eaac28e0e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
