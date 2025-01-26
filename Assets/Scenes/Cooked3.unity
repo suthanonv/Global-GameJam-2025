@@ -832,8 +832,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 503153196}
-  minPitch: 0.8
-  maxPitch: 1.2
+  minPitch: 0.6
+  maxPitch: 1.5
 --- !u!4 &503153198
 Transform:
   m_ObjectHideFlags: 0
