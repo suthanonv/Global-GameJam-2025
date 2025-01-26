@@ -39,11 +39,13 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadPreviousLevel()
     {
+        PauseGame._instance.Unpause();
         StartCoroutine(LoadLevel(_currentSceneIndex - 1));
     }
 
     public void LoadNextLevel()
     {
+        PauseGame._instance.Unpause();
         StartCoroutine(LoadLevel(_currentSceneIndex + 1));
     }
 
