@@ -18,7 +18,7 @@ public class Skiping : MonoBehaviour
     [SerializeField] string Name_Future = "";
     [SerializeField] string name_lastTIle = "Cooked11";
 
-    [SerializeField] float TransitionTime = 1;
+    float TransitionTime = 2;
 
     string CurrentName = "";
 
