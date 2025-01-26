@@ -11,14 +11,14 @@ public class RestartButton : MonoBehaviour
         {
             if (oneTime == false)
             {
-                if (LevelLoader._instance != null)
-                {
-                    LevelLoader._instance.RestartLevel();
-                }
-                else
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                }
+                //if (LevelLoader._instance != null)
+                //{
+                //    LevelLoader._instance.RestartLevel();
+                //}
+                //else
+                //{
+                //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                //}
             }
 
         }

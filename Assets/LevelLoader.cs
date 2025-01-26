@@ -10,6 +10,7 @@ public class LevelLoader : MonoBehaviour
     public float _transitionTime = 1f;
 
     private int _currentSceneIndex;
+    private string tRGWT;
 
     private void Awake()
     {
@@ -21,6 +22,8 @@ public class LevelLoader : MonoBehaviour
     }
     private void Start()
     {
+        Invoke("aaaa", 5f);
+
         Debug.Log("_currentSceneIndex has been set to current active scene.");
         _currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
@@ -38,39 +41,40 @@ public class LevelLoader : MonoBehaviour
     public void LoadMainMenu()
     {
         PauseGame._instance.Unpause();
-        StartCoroutine(StartTransition());
+      //  StartCoroutine(StartTransition());
         SceneManager.LoadScene("MainMenuAndStage");
     }
     public void LoadNextLevel()
     {
         PauseGame._instance.Unpause();
-        StartCoroutine(StartTransition());
+      //  StartCoroutine(StartTransition());
         SceneManager.LoadScene(_currentSceneIndex + 1);
     }
 
     public void LoadPreviousLevel()
     {
         PauseGame._instance.Unpause();
-        StartCoroutine(StartTransition());
+       // StartCoroutine(StartTransition());
         SceneManager.LoadScene(_currentSceneIndex + 1);
     }
     public void RestartLevel()
     {
         PauseGame._instance.Unpause();
-        StartCoroutine(StartTransition());
+       // StartCoroutine(StartTransition());
         SceneManager.LoadScene(_currentSceneIndex);
     }
 
+    public string SceneName;
     public void LoadSpecificLevel(string LevelName)
     {
+        SceneName =  LevelName;
         PauseGame._instance.Unpause();
-        StartCoroutine(StartTransition());
-        SceneManager.LoadScene(LevelName);
-    }
-    IEnumerator StartTransition()
-    {
         _transition.SetTrigger("Start");
-        yield return new WaitForSeconds(_transitionTime);
+        Invoke("LoadSceneByName", _transitionTime);
+    }
+    void LoadSceneByName()
+    {
+        SceneManager.LoadScene(SceneName);
     }
 
 }
