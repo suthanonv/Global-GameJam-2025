@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioSource _soundFxSource;
 
-    public void PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
+    public void PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform)
     {
         //spawn in GO
         AudioSource _audioSource = Instantiate(_soundFxSource, spawnTransform.position, Quaternion.identity);
@@ -24,7 +24,7 @@ public class SoundManager : MonoBehaviour
         Destroy(_audioSource.gameObject, clipLength);
     }
 
-    public void PlaySoundFXClipWithPitchChange(AudioClip audioClip, float volume)
+    public void PlaySoundFXClipWithPitchChange(AudioClip audioClip)
     {
 
     }

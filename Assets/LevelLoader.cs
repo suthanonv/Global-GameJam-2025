@@ -17,7 +17,7 @@ public class LevelLoader : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         _instance = this;
 
-        _transition.SetTrigger("Scene Initiated");
+        _transition.SetTrigger("New Scene Initiated");
     }
     private void Start()
     {
@@ -26,39 +26,51 @@ public class LevelLoader : MonoBehaviour
     }
     private void Update()
     {
-        if (_currentSceneIndex != SceneManager.GetActiveScene().buildIndex) //For Fixing Animation
+        if (_currentSceneIndex != SceneManager.GetActiveScene().buildIndex) //For Activating Intro Animtion on new scene load
         {
             Debug.Log("_currentSceneIndex is no longer equal to current sceneIndex, now updating.");
             //updates _currentSceneIndex, followed by initializing the update for a new scene
             _currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            _transition.SetTrigger("Last Scene Finished");
-            _transition.SetTrigger("Scene Initiated");
+            _transition.SetTrigger("New Scene Initiated");
         }
-    } //Only For Animation
+    } //Update Used Only For Animation
+
+    public void LoadMainMenu()
+    {
+        PauseGame._instance.Unpause();
+        StartCoroutine(StartTransition());
+        SceneManager.LoadScene("MainMenuAndStage");
+    }
+    public void LoadNextLevel()
+    {
+        PauseGame._instance.Unpause();
+        StartCoroutine(StartTransition());
+        SceneManager.LoadScene(_currentSceneIndex + 1);
+    }
 
     public void LoadPreviousLevel()
     {
         PauseGame._instance.Unpause();
-        StartCoroutine(LoadLevel(_currentSceneIndex - 1));
+        StartCoroutine(StartTransition());
+        SceneManager.LoadScene(_currentSceneIndex + 1);
     }
-
-    public void LoadNextLevel()
+    public void RestartLevel()
     {
         PauseGame._instance.Unpause();
-        StartCoroutine(LoadLevel(_currentSceneIndex + 1));
+        StartCoroutine(StartTransition());
+        SceneManager.LoadScene(_currentSceneIndex);
     }
 
-    public IEnumerator LoadLevel(int levelIndex)
+    public void LoadSpecificLevel(string LevelName)
+    {
+        PauseGame._instance.Unpause();
+        StartCoroutine(StartTransition());
+        SceneManager.LoadScene(LevelName);
+    }
+    IEnumerator StartTransition()
     {
         _transition.SetTrigger("Start");
-
         yield return new WaitForSeconds(_transitionTime);
-
-        SceneManager.LoadScene(levelIndex);
     }
 
-    public void LoadMainMenu()
-    {
-        SceneManager.LoadScene("MainMenuAndStage");
-    }
 }
