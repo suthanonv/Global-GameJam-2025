@@ -24,24 +24,8 @@ public class SoundManager : MonoBehaviour
         Destroy(_audioSource.gameObject, clipLength);
     }
 
-    public void PlaySoundFXClipWithPitchChange(AudioClip audioClip, Transform spawnTransform, float volume)
+    public void PlaySoundFXClipWithPitchChange(AudioClip audioClip, float volume)
     {
-        //spawn in GO
-        AudioSource _audioSource = Instantiate(_soundFxSource, spawnTransform.position, Quaternion.identity);
 
-        //assign the audioClip
-        _audioSource.clip = audioClip;
-
-        //randomize pitch within a range
-        _audioSource.pitch = Random.Range(1f, 1.5f);
-
-        //play sound
-        _audioSource.Play();
-
-        //get length of sound fx clip
-        float clipLength = _audioSource.clip.length;
-
-        //destroy the clip after it is done playing
-        Destroy(_audioSource.gameObject, clipLength);
     }
 }

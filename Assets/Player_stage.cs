@@ -5,6 +5,7 @@ public enum Box_Stage { Sleep, Wake, Sticky }
 public class Player_stage : MonoBehaviour
 {
     [SerializeField] SpriteRenderer sprite_render;
+    [SerializeField] SoundSmack playsmacksound;
 
     [SerializeField] Box_Stage box_Stage;
 
@@ -17,8 +18,9 @@ public class Player_stage : MonoBehaviour
         get { return box_Stage; }
         set
         {
+            playsmacksound.PlaySound();
             box_Stage = value;
-
+            
             // Replacing switch-case with if-else
             if (box_Stage == Box_Stage.Sleep)
             {
