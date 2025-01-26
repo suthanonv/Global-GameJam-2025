@@ -15,8 +15,6 @@ public class Animation_playing : MonoBehaviour
     public void Playing_Open()
     {
         anim.Play("Open");
-
-
     }
 
 }
