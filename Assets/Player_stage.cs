@@ -6,6 +6,11 @@ public class Player_stage : MonoBehaviour
     [SerializeField] SpriteRenderer sprite_render;
 
     [SerializeField] Box_Stage box_Stage;
+
+    private void Start()
+    {
+        Stage = box_Stage;
+    }
     public Box_Stage Stage
     {
         get { return box_Stage; }
