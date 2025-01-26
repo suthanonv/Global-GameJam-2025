@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class RestartButton : MonoBehaviour
 {
     [SerializeField] string Level;
@@ -10,7 +11,7 @@ public class RestartButton : MonoBehaviour
         {
             if (oneTime == false)
             {
-                Skiping.Instance.Loading(Level);
+                Skiping.Instance.Loading(SceneManager.GetActiveScene().name);
             }
 
         }
