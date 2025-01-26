@@ -18,15 +18,16 @@ public class Winning_Check : MonoBehaviour
     }
     bool isWininng()
     {
+        bool toReturn = true;
         foreach (Checkpoint i in All_Winning_Tile)
         {
             if (i.IsWin() == false)
             {
-                return false;
+                toReturn =  false;
             }
         }
 
-        return true;
+        return toReturn;
     }
 
     IEnumerator GoNextStage()
