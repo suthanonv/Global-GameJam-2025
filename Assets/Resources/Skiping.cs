@@ -3,6 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class Skiping : MonoBehaviour
 {
+    public static Skiping Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     [SerializeField] KeyCode Key_skip = KeyCode.O;
     [SerializeField] KeyCode Key_o = KeyCode.P;
     [SerializeField] KeyCode key_M = KeyCode.M;
@@ -43,6 +50,15 @@ public class Skiping : MonoBehaviour
 
         }
 
+
+    }
+
+
+    public void Loading(string anme)
+    {
+        CurrentName = anme;
+
+        Invoke("LoadingScreen", TransitionTime);
 
     }
 

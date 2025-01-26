@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
+
 public class Winning_Check : MonoBehaviour
 {
     [SerializeField] List<Checkpoint> All_Winning_Tile = new List<Checkpoint>();
@@ -24,20 +22,27 @@ public class Winning_Check : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.Play(); // Play the sound
+
         }
         else
         {
             Debug.LogWarning("AudioSource is not assigned!");
         }
+
+        Skiping.Instance.Loading(NextStageName);
+
     }
 
+
+    bool one = false;
 
     private void Update()
     {
         if (isWininng())
         {
+            if (one) return;
+            one = true;
             Finish();
-            StartCoroutine(GoNextStage());
         }
     }
     bool isWininng()
@@ -47,17 +52,12 @@ public class Winning_Check : MonoBehaviour
         {
             if (i.IsWin() == false)
             {
-                toReturn =  false;
+                toReturn = false;
             }
         }
 
         return toReturn;
     }
 
-    IEnumerator GoNextStage()
-    {
 
-        yield return new WaitForSecondsRealtime(2);
-        SceneManager.LoadScene(NextStageName);
-    }
 }
