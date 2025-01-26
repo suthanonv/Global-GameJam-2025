@@ -11,7 +11,7 @@ public class Skiping : MonoBehaviour
     [SerializeField] string Name_Future = "";
     [SerializeField] string name_lastTIle = "Cooked11";
 
-    float TransitionTime = 1;
+    [SerializeField] float TransitionTime = 1;
 
     string CurrentName = "";
 
@@ -38,6 +38,9 @@ public class Skiping : MonoBehaviour
             CurrentName = name_lastTIle;
 
             this.GetComponent<Animation_playing>().Playing_CLose();
+
+            Invoke("LoadingScreen", TransitionTime);
+
         }
 
 
