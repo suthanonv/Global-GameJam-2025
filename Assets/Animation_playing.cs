@@ -3,7 +3,7 @@ using UnityEngine;
 public class Animation_playing : MonoBehaviour
 {
     [SerializeField] Animator anim;
-    [SerializeField] Animation clip;
+
 
     public void Playing_CLose()
     {

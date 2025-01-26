@@ -12,12 +12,15 @@ public class Skiping : MonoBehaviour
     [SerializeField] string name_lastTIle = "Cooked11";
 
     float TransitionTime = 1;
+
+    string CurrentName = "";
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(Key_skip))
         {
-            name = Name_Future;
+            CurrentName = Name_Future;
             this.GetComponent<Animation_playing>().Playing_CLose();
             Invoke("LoadingScreen", TransitionTime);
         }
@@ -25,24 +28,25 @@ public class Skiping : MonoBehaviour
 
         if (Input.GetKeyDown(Key_o))
         {
-            name = Name_Previos;
+            CurrentName = Name_Previos;
             this.GetComponent<Animation_playing>().Playing_CLose();
             Invoke("LoadingScreen", TransitionTime);
         }
 
         if (Input.GetKeyDown(key_M))
         {
+            CurrentName = name_lastTIle;
 
+            this.GetComponent<Animation_playing>().Playing_CLose();
         }
 
 
     }
 
 
-    string name;
     public void LoadingScreen()
     {
         if (Name_Future == "") return;
-        SceneManager.LoadScene(name);
+        SceneManager.LoadScene(CurrentName);
     }
 }
